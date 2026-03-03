@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { ArrowRight, Bell, Sparkles, Zap, Shield, Star } from "lucide-react"
+import Icon from "@/components/ui/icon"
 
 export function LandingPage() {
   const { theme } = useTheme()
@@ -431,6 +432,130 @@ export function LandingPage() {
                 <span>{feature.text}</span>
               </div>
             ))}
+          </div>
+
+          {/* Schedule */}
+          <div className="w-full max-w-3xl mt-4">
+            <div className={cn("text-center mb-6", themeConfig.fontClass)}>
+              <p className={cn("text-xs uppercase tracking-widest mb-1", themeConfig.mutedForeground)}>
+                {theme === "terminal" ? "// program:" : "Программа форума"}
+              </p>
+              <p className={cn("text-lg font-bold", themeConfig.foreground)}>
+                {theme === "terminal" ? "$ date: 06.03.2026" : "6 марта 2026 года"}
+              </p>
+            </div>
+            <div className="flex flex-col gap-3">
+              {[
+                {
+                  num: "01",
+                  time: "10:00",
+                  title: "Основные принципы организации системы обучения Первой помощи в РФ, новые изменения в законодательстве. Рекомендации по работе группы",
+                  speaker: "Колодкин Андрей Андреевич",
+                  role: "Главный внештатный специалист по первой помощи Минздрава России, заместитель директора института усовершенствования врачей ФГБУ «НМХЦ имени Н. И. Пирогова»",
+                  vks: false,
+                },
+                {
+                  num: "02",
+                  time: "11:00",
+                  title: "О реализации проекта по обучению Первой помощи в Белгородской области",
+                  speaker: "Винюкова Галина Алексеевна",
+                  role: "Председатель Белгородского общества первой помощи, заведующий Губкинской ПС",
+                  vks: false,
+                },
+                {
+                  num: "03",
+                  time: "11:30",
+                  title: "О создании единого методического центра по ПП. Принципы организации учебных программ",
+                  speaker: "Григорьев Станислав Александрович",
+                  role: "Заведующий учебно-методическим центром ОСМК ОГБУЗ «ССМП БО», главный внештатный специалист МЗ БО по ПП",
+                  vks: false,
+                },
+                {
+                  num: "04",
+                  time: "12:00",
+                  title: "Система обучения первой помощи в Луганской народной республике. Основные проблемы и пути решения",
+                  speaker: "Калугина Виктория Александровна",
+                  role: "Заместитель директора по оперативной работе, медицине катастроф и защите населения ГБУЗ «Луганский республиканский центр экстренной медицинской помощи»",
+                  vks: false,
+                },
+                {
+                  num: "05",
+                  time: "12:00",
+                  title: "Создание и развитие добровольческого движения по оказанию первой помощи в Курской области",
+                  speaker: "Сухарева Елена Егоровна",
+                  role: "Заведующая учебно-методическим отделом ТЦМК ОБУЗ «КОМКБ»",
+                  vks: false,
+                },
+                {
+                  num: "06",
+                  time: "12:20",
+                  title: "Опыт организации массового обучения населения навыкам первой помощи в ХМАО — Югре",
+                  speaker: "Федько Роман Васильевич",
+                  role: "Главный внештатный специалист по первой помощи Департамента здравоохранения ХМАО — Югры",
+                  vks: true,
+                },
+                {
+                  num: "07",
+                  time: "12:35",
+                  title: "Дистанционное консультирование первой помощи до приезда бригады СМП. Опыт Республики Коми 2025",
+                  speaker: "Головина Татьяна Трофимовна",
+                  role: "Заместитель главного врача по оперативной работе ГБУ РК ТЦМК Республики Коми",
+                  vks: true,
+                },
+                {
+                  num: "08",
+                  time: "12:50",
+                  title: "Алгоритм использования АНД при расширенной СЛР",
+                  speaker: "Согомонян Карен Ашотович",
+                  role: "к.м.н., главный врач ГБУЗ «ССМП города-курорта Геленджик»",
+                  vks: true,
+                },
+              ].map((item) => (
+                <div
+                  key={item.num}
+                  className={cn(
+                    "flex gap-3 sm:gap-4 p-4 rounded-xl border transition-all",
+                    themeConfig.muted,
+                    themeConfig.border,
+                    theme === "glass" && "backdrop-blur-xl bg-white/30",
+                    theme === "neon" && "shadow-[0_0_10px_rgba(34,211,238,0.08)]",
+                  )}
+                >
+                  <div className={cn("text-lg sm:text-xl font-bold tabular-nums shrink-0 w-8 text-center", themeConfig.mutedForeground, themeConfig.fontClass)}>
+                    {item.num}
+                  </div>
+                  <div className="flex flex-col gap-1 min-w-0">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className={cn("text-xs font-semibold flex items-center gap-1", themeConfig.mutedForeground, themeConfig.fontClass)}>
+                        <Icon name="Clock" size={12} />
+                        {item.time}
+                      </span>
+                      {item.vks && (
+                        <span className={cn(
+                          "text-[10px] px-2 py-0.5 rounded-full border font-medium",
+                          themeConfig.border,
+                          themeConfig.mutedForeground,
+                          theme === "neon" && "border-cyan-500/50 text-cyan-400",
+                          theme === "luxury" && "border-amber-500/30 text-amber-400",
+                        )}>
+                          ВКС
+                        </span>
+                      )}
+                    </div>
+                    <p className={cn("text-sm font-semibold leading-snug", themeConfig.foreground, themeConfig.fontClass)}>
+                      {item.title}
+                    </p>
+                    <div className={cn("flex items-start gap-1 mt-0.5", themeConfig.mutedForeground)}>
+                      <Icon name="User" size={12} className="mt-0.5 shrink-0" />
+                      <div className="flex flex-col">
+                        <span className={cn("text-xs font-medium", themeConfig.fontClass)}>{item.speaker}</span>
+                        <span className={cn("text-[11px] leading-snug", themeConfig.fontClass)}>{item.role}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Social Proof */}
