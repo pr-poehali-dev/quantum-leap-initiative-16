@@ -48,101 +48,101 @@ export function LandingPage() {
     }
   > = {
     "minimal-light": {
-      badge: "Скоро запуск",
-      title: "Будущее",
-      highlight: "продуктивности",
+      badge: "Скоро открытие",
+      title: "Первая помощь —",
+      highlight: "дорога к спасению",
       subtitle:
-        "Мы создаем то, что изменит ваш подход к работе. Просто, мощно и современно.",
-      cta: "Получить ранний доступ",
+        "Площадка, где люди делятся реальным опытом организации первой помощи. Вместе мы спасаем больше жизней.",
+      cta: "Узнать первым об открытии",
       features: [
-        { icon: Sparkles, text: "На базе ИИ" },
-        { icon: Zap, text: "Молниеносно" },
-        { icon: Shield, text: "Приватность" },
+        { icon: Sparkles, text: "Реальный опыт" },
+        { icon: Zap, text: "Быстрый доступ" },
+        { icon: Shield, text: "Проверено" },
       ],
     },
     dark: {
-      badge: "Скоро старт",
-      title: "Новый уровень",
-      highlight: "эволюции",
-      subtitle: "Новый стандарт цифрового опыта. Создано для тех, кто требует лучшего.",
-      cta: "Встать в очередь",
+      badge: "Скоро открытие",
+      title: "Первая помощь —",
+      highlight: "дорога к спасению",
+      subtitle: "Площадка для обмена опытом организации первой помощи. Каждая история может спасти чью-то жизнь.",
+      cta: "Присоединиться к сообществу",
       features: [
-        { icon: Sparkles, text: "Новое поколение" },
-        { icon: Zap, text: "Сверхскорость" },
-        { icon: Shield, text: "Для бизнеса" },
+        { icon: Sparkles, text: "Сообщество" },
+        { icon: Zap, text: "Реальные случаи" },
+        { icon: Shield, text: "Достоверно" },
       ],
     },
     retro: {
-      badge: "Отправление скоро",
-      title: "Ваше путешествие",
-      highlight: "начинается здесь",
-      subtitle: "Шагните в мир, где классика встречает инновации. Вечный дизайн, современный функционал.",
-      cta: "Забронировать место",
+      badge: "Скоро открытие",
+      title: "Первая помощь —",
+      highlight: "дорога к спасению",
+      subtitle: "Форум, где каждый может поделиться опытом и узнать, как действовать в критической ситуации.",
+      cta: "Занять место в сообществе",
       features: [
-        { icon: Sparkles, text: "Вечный дизайн" },
-        { icon: Zap, text: "Мгновенный доступ" },
+        { icon: Sparkles, text: "Живые истории" },
+        { icon: Zap, text: "Советы экспертов" },
         { icon: Shield, text: "Надежность" },
       ],
     },
     neon: {
-      badge: "[ ИНИЦИАЛИЗАЦИЯ ]",
-      title: "СИСТЕМНЫЙ",
-      highlight: "ПРОРЫВ",
-      subtitle: "Протокол интерфейса нового поколения. Ломаем барьеры. Переопределяем границы.",
-      cta: "НАЧАТЬ ДОСТУП",
+      badge: "[ СКОРО ЗАПУСК ]",
+      title: "ПЕРВАЯ ПОМОЩЬ —",
+      highlight: "СПАСИ ЖИЗНЬ",
+      subtitle: "Платформа для обмена опытом в критических ситуациях. Знания, которые спасают жизни.",
+      cta: "ВСТУПИТЬ В СООБЩЕСТВО",
       features: [
-        { icon: Sparkles, text: "КВАНТОВОЕ ЯДРО" },
-        { icon: Zap, text: "ГИПЕРСКОРОСТЬ" },
-        { icon: Shield, text: "ШИФРОВАНИЕ" },
+        { icon: Sparkles, text: "РЕАЛЬНЫЙ ОПЫТ" },
+        { icon: Zap, text: "БЫСТРЫЕ СОВЕТЫ" },
+        { icon: Shield, text: "ПРОВЕРЕНО" },
       ],
     },
     monochrome: {
-      badge: "Анонс",
-      title: "Изысканная",
-      highlight: "простота",
-      subtitle: "Где форма встречает функцию. Создано с умыслом, спроектировано для эффекта.",
+      badge: "Скоро открытие",
+      title: "Первая помощь —",
+      highlight: "дорога к спасению",
+      subtitle: "Площадка для обмена опытом организации первой помощи. Каждая история имеет значение.",
       cta: "Получить уведомление",
       features: [
-        { icon: Sparkles, text: "Продуманно" },
-        { icon: Zap, text: "Эффективно" },
-        { icon: Shield, text: "Надежно" },
+        { icon: Sparkles, text: "Опыт участников" },
+        { icon: Zap, text: "Актуально" },
+        { icon: Shield, text: "Достоверно" },
       ],
     },
     glass: {
-      badge: "Превью",
-      title: "За пределами",
-      highlight: "границ",
-      subtitle: "Плавный опыт, который адаптируется под вас. Бесшовно, красиво, интуитивно.",
-      cta: "Запросить доступ",
+      badge: "Скоро открытие",
+      title: "Первая помощь —",
+      highlight: "дорога к спасению",
+      subtitle: "Пространство, где реальный опыт становится знанием, а знание — спасёнными жизнями.",
+      cta: "Присоединиться",
       features: [
-        { icon: Sparkles, text: "Адаптивно" },
-        { icon: Zap, text: "Бесшовно" },
+        { icon: Sparkles, text: "Сообщество" },
+        { icon: Zap, text: "Практично" },
         { icon: Shield, text: "Безопасно" },
       ],
     },
     terminal: {
-      badge: "> status: pending",
-      title: "$ sudo launch",
-      highlight: "--force",
-      subtitle: "// требуется root доступ. ожидание подтверждения развертывания...",
+      badge: "> status: coming_soon",
+      title: "$ forum",
+      highlight: "first_aid",
+      subtitle: "// платформа обмена опытом первой помощи. ожидайте открытия...",
       cta: "$ subscribe --notify",
       features: [
-        { icon: Sparkles, text: "--optimized" },
-        { icon: Zap, text: "--async" },
-        { icon: Shield, text: "--secure" },
+        { icon: Sparkles, text: "--real-cases" },
+        { icon: Zap, text: "--expert-tips" },
+        { icon: Shield, text: "--verified" },
       ],
     },
     luxury: {
-      badge: "Эксклюзивный превью",
-      title: "Открываем",
-      highlight: "совершенство",
+      badge: "Эксклюзивный запуск",
+      title: "Первая помощь —",
+      highlight: "дорога к спасению",
       subtitle:
-        "Для избранных ценителей. Опыт, созданный для тех, кто не соглашается на меньшее.",
+        "Элитное сообщество профессионалов, объединённых одной миссией — сделать первую помощь доступным знанием для всех.",
       cta: "Запросить приглашение",
       features: [
-        { icon: Sparkles, text: "Уникально" },
-        { icon: Zap, text: "Премиум" },
-        { icon: Shield, text: "Эксклюзив" },
+        { icon: Sparkles, text: "Экспертиза" },
+        { icon: Zap, text: "Уникально" },
+        { icon: Shield, text: "Проверено" },
       ],
     },
   }
@@ -246,7 +246,7 @@ export function LandingPage() {
                 themeConfig.fontClass,
               )}
             >
-              {theme === "terminal" ? "// time_remaining:" : "До запуска"}
+              {theme === "terminal" ? "// time_remaining:" : "До открытия форума"}
             </p>
             <ThemedCountdown targetDate={targetDate} />
             <button
@@ -383,7 +383,7 @@ export function LandingPage() {
           >
             <Input
               type="email"
-              placeholder={theme === "terminal" ? "your@email.sh" : "Введите email"}
+              placeholder={theme === "terminal" ? "your@email.sh" : "Ваш email — узнаете первым"}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className={cn(
@@ -483,7 +483,7 @@ export function LandingPage() {
                 ))}
               </div>
               <span className="text-[10px] sm:text-xs">
-                {theme === "terminal" ? "// 2847 users_waiting" : "Уже 2 847+ в очереди"}
+                {theme === "terminal" ? "// 1200 members_waiting" : "Уже 1 200+ участников ждут открытия"}
               </span>
             </div>
           </div>
@@ -501,8 +501,8 @@ export function LandingPage() {
       >
         <p className="text-xs sm:text-sm">
           {theme === "terminal"
-            ? "© 2025 // launchpad_inc | privacy --policy | terms --conditions"
-            : "© 2025 LaunchPad Inc. · Политика конфиденциальности · Условия"}
+            ? "© 2026 // pervaya_pomosh | forum --first_aid | privacy --policy"
+            : "© 2026 Первая помощь — дорога к спасению жизни · Политика конфиденциальности"}
         </p>
       </footer>
     </div>
