@@ -373,44 +373,6 @@ export function LandingPage() {
             </div>
           )}
 
-          {/* Email Signup */}
-          <div
-            className={cn(
-              "w-full max-w-md flex flex-col gap-2 sm:gap-3 p-2 rounded-2xl border transition-all",
-              themeConfig.muted,
-              themeConfig.border,
-              theme === "glass" && "backdrop-blur-xl bg-white/40",
-              theme === "neon" && "shadow-[0_0_20px_rgba(34,211,238,0.1)]",
-            )}
-          >
-            <Input
-              type="email"
-              placeholder={theme === "terminal" ? "your@email.sh" : "Ваш email — узнаете первым"}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className={cn(
-                "flex-1 border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 shadow-none text-sm sm:text-base",
-                themeConfig.cardForeground,
-                themeConfig.fontClass,
-                "placeholder:opacity-50",
-              )}
-            />
-            <button
-              className={cn(
-                "w-full px-4 sm:px-6 py-2.5 font-semibold transition-all duration-200 flex items-center justify-center gap-2 text-sm sm:text-base sm:py-1.5 rounded-lg",
-                "hover:scale-[1.02] active:scale-[0.98]",
-                themeConfig.accent,
-                themeConfig.accentForeground,
-                themeConfig.fontClass,
-                theme === "neon" && "shadow-[0_0_25px_rgba(34,211,238,0.5)]",
-                theme === "luxury" && "shadow-[0_0_25px_rgba(251,191,36,0.3)]",
-              )}
-            >
-              {currentContent.cta}
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
-
           {/* Features */}
           <div className="flex items-center justify-center gap-4 sm:gap-6 md:gap-10 flex-wrap">
             {currentContent.features.map((feature, index) => (
