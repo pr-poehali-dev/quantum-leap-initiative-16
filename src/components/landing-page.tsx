@@ -15,13 +15,15 @@ export function LandingPage() {
 
   const [targetDate, setTargetDate] = useState<Date>(() => {
     const date = new Date()
-    date.setDate(date.getDate() + 7)
+    date.setDate(date.getDate() + 2)
+    date.setHours(date.getHours() + 21)
+    date.setMinutes(date.getMinutes() + 28)
     return date
   })
 
-  const [days, setDays] = useState("7")
-  const [hours, setHours] = useState("0")
-  const [minutes, setMinutes] = useState("0")
+  const [days, setDays] = useState("2")
+  const [hours, setHours] = useState("21")
+  const [minutes, setMinutes] = useState("28")
   const [seconds, setSeconds] = useState("0")
   const [email, setEmail] = useState("")
   const [showSettings, setShowSettings] = useState(false)
