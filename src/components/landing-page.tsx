@@ -25,6 +25,7 @@ export function LandingPage() {
   const [seconds, setSeconds] = useState("0")
   const [email, setEmail] = useState("")
   const [showSettings, setShowSettings] = useState(false)
+  const [activeSection, setActiveSection] = useState(0)
 
   const handleSetTimer = () => {
     const newTarget = new Date()
@@ -435,128 +436,175 @@ export function LandingPage() {
           </div>
 
           {/* Schedule */}
-          <div className="w-full max-w-3xl mt-4">
-            <div className={cn("text-center mb-6", themeConfig.fontClass)}>
-              <p className={cn("text-xs uppercase tracking-widest mb-1", themeConfig.mutedForeground)}>
-                {theme === "terminal" ? "// program:" : "Программа форума"}
-              </p>
-              <p className={cn("text-lg font-bold", themeConfig.foreground)}>
-                {theme === "terminal" ? "$ date: 06.03.2026" : "6 марта 2026 года"}
-              </p>
-            </div>
-            <div className="flex flex-col gap-3">
-              {[
-                {
-                  num: "01",
-                  time: "10:00",
-                  title: "Основные принципы организации системы обучения Первой помощи в РФ, новые изменения в законодательстве. Рекомендации по работе группы",
-                  speaker: "Колодкин Андрей Андреевич",
-                  role: "Главный внештатный специалист по первой помощи Минздрава России, заместитель директора института усовершенствования врачей ФГБУ «НМХЦ имени Н. И. Пирогова»",
-                  vks: false,
-                },
-                {
-                  num: "02",
-                  time: "11:00",
-                  title: "О реализации проекта по обучению Первой помощи в Белгородской области",
-                  speaker: "Винюкова Галина Алексеевна",
-                  role: "Председатель Белгородского общества первой помощи, заведующий Губкинской ПС",
-                  vks: false,
-                },
-                {
-                  num: "03",
-                  time: "11:30",
-                  title: "О создании единого методического центра по ПП. Принципы организации учебных программ",
-                  speaker: "Григорьев Станислав Александрович",
-                  role: "Заведующий учебно-методическим центром ОСМК ОГБУЗ «ССМП БО», главный внештатный специалист МЗ БО по ПП",
-                  vks: false,
-                },
-                {
-                  num: "04",
-                  time: "12:00",
-                  title: "Система обучения первой помощи в Луганской народной республике. Основные проблемы и пути решения",
-                  speaker: "Калугина Виктория Александровна",
-                  role: "Заместитель директора по оперативной работе, медицине катастроф и защите населения ГБУЗ «Луганский республиканский центр экстренной медицинской помощи»",
-                  vks: false,
-                },
-                {
-                  num: "05",
-                  time: "12:00",
-                  title: "Создание и развитие добровольческого движения по оказанию первой помощи в Курской области",
-                  speaker: "Сухарева Елена Егоровна",
-                  role: "Заведующая учебно-методическим отделом ТЦМК ОБУЗ «КОМКБ»",
-                  vks: false,
-                },
-                {
-                  num: "06",
-                  time: "12:20",
-                  title: "Опыт организации массового обучения населения навыкам первой помощи в ХМАО — Югре",
-                  speaker: "Федько Роман Васильевич",
-                  role: "Главный внештатный специалист по первой помощи Департамента здравоохранения ХМАО — Югры",
-                  vks: true,
-                },
-                {
-                  num: "07",
-                  time: "12:35",
-                  title: "Дистанционное консультирование первой помощи до приезда бригады СМП. Опыт Республики Коми 2025",
-                  speaker: "Головина Татьяна Трофимовна",
-                  role: "Заместитель главного врача по оперативной работе ГБУ РК ТЦМК Республики Коми",
-                  vks: true,
-                },
-                {
-                  num: "08",
-                  time: "12:50",
-                  title: "Алгоритм использования АНД при расширенной СЛР",
-                  speaker: "Согомонян Карен Ашотович",
-                  role: "к.м.н., главный врач ГБУЗ «ССМП города-курорта Геленджик»",
-                  vks: true,
-                },
-              ].map((item) => (
-                <div
-                  key={item.num}
-                  className={cn(
-                    "flex gap-3 sm:gap-4 p-4 rounded-xl border transition-all",
-                    themeConfig.muted,
-                    themeConfig.border,
-                    theme === "glass" && "backdrop-blur-xl bg-white/30",
-                    theme === "neon" && "shadow-[0_0_10px_rgba(34,211,238,0.08)]",
-                  )}
-                >
-                  <div className={cn("text-lg sm:text-xl font-bold tabular-nums shrink-0 w-8 text-center", themeConfig.mutedForeground, themeConfig.fontClass)}>
-                    {item.num}
-                  </div>
-                  <div className="flex flex-col gap-1 min-w-0">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <span className={cn("text-xs font-semibold flex items-center gap-1", themeConfig.mutedForeground, themeConfig.fontClass)}>
-                        <Icon name="Clock" size={12} />
-                        {item.time}
-                      </span>
-                      {item.vks && (
-                        <span className={cn(
-                          "text-[10px] px-2 py-0.5 rounded-full border font-medium",
-                          themeConfig.border,
-                          themeConfig.mutedForeground,
-                          theme === "neon" && "border-cyan-500/50 text-cyan-400",
-                          theme === "luxury" && "border-amber-500/30 text-amber-400",
-                        )}>
-                          ВКС
-                        </span>
+          {(() => {
+            const sections = [
+              {
+                id: "s1",
+                title: "Секция 1",
+                subtitle: "Заседание межведомственной рабочей группы по совершенствованию оказания первой помощи в Белгородской области",
+                time: "10:30 – 13:30",
+                location: "Локация №1 «Креатив-Таун»",
+                moderators: [
+                  { name: "Иконников А.А.", role: "министр здравоохранения Белгородской области, заместитель председателя рабочей группы" },
+                  { name: "Колодкин А.А.", role: "главный внештатный специалист по первой помощи Минздрава России, заместитель директора института усовершенствования врачей ФГБУ «НМХЦ имени Н. И. Пирогова» Минздрава России" },
+                  { name: "Жиров А.В.", role: "главный врач ОГБУЗ «Станция скорой медицинской помощи Белгородской области», главный внештатный специалист МЗ БО по скорой медицинской помощи" },
+                  { name: "Григорьев С.А.", role: "секретарь рабочей группы" },
+                ],
+                reports: [
+                  { num: "01", vksTime: "", title: "Основные принципы организации системы обучения Первой помощи в РФ, новые изменения в законодательстве. Рекомендации по работе группы", speaker: "Колодкин Андрей Андреевич", role: "Главный внештатный специалист по первой помощи Минздрава России, заместитель директора института усовершенствования врачей ФГБУ «НМХЦ имени Н. И. Пирогова» Минздрава России" },
+                  { num: "02", vksTime: "", title: "О реализации проекта по обучению Первой помощи в Белгородской области", speaker: "Винюкова Галина Алексеевна", role: "Председатель Белгородского общества первой помощи, заведующий Губкинской ПС" },
+                  { num: "03", vksTime: "", title: "О создании единого методического центра по ПП. Принципы организации учебных программ", speaker: "Григорьев Станислав Александрович", role: "Заведующий учебно-методическим центром ОСМК ОГБУЗ «ССМП БО», главный внештатный специалист МЗ БО по ПП" },
+                  { num: "04", vksTime: "", title: "Система обучения первой помощи в Луганской народной республике. Основные проблемы и пути решения", speaker: "Калугина Виктория Александровна", role: "Заместитель директора по оперативной работе, медицине катастроф и защите населения ГБУЗ «Луганский республиканский центр экстренной медицинской помощи и медицины катастроф»" },
+                  { num: "05", vksTime: "", title: "Создание и развитие добровольческого движения по оказанию первой помощи в Курской области", speaker: "Сухарева Елена Егоровна", role: "Заведующая учебно-методическим отделом ТЦМК ОБУЗ «КОМКБ»" },
+                  { num: "06", vksTime: "12:20", title: "Опыт организации массового обучения населения навыкам первой помощи в ХМАО – Югре", speaker: "Федько Роман Васильевич", role: "Главный внештатный специалист по первой помощи Департамента здравоохранения ХМАО – Югры" },
+                  { num: "07", vksTime: "12:35", title: "Дистанционное консультирование первой помощи до приезда бригады СМП. Опыт Республики Коми 2025", speaker: "Головина Татьяна Трофимовна", role: "Заместитель главного врача по оперативной работе ГБУ РК ТЦМК Республики Коми" },
+                  { num: "08", vksTime: "12:50", title: "Алгоритм использования АНД при расширенной СЛР", speaker: "Согомонян Карен Ашотович", role: "к.м.н., главный врач ГБУЗ «ССМП города-курорта Геленджик»" },
+                ],
+              },
+              {
+                id: "s2",
+                title: "Секция 2",
+                subtitle: "Организация обучения первой помощи в образовательных организациях",
+                time: "10:30 – 13:30",
+                location: "Локация №2 «Креатив-Таун»",
+                moderators: [
+                  { name: "Дежурный Л.И.", role: "д.м.н., профессор, председатель Российского общества первой помощи, руководитель Методического аккредитационно-симуляционного центра ФГБУ «ЦНИИ ОИЗ» Минздрава России" },
+                  { name: "Дуброва В.А.", role: "директор Медицинского колледжа НИУ «БелГУ»" },
+                  { name: "Козлова И.Э.", role: "начальник организационно-методического отдела ОГКУЗ «МИАЦ»" },
+                ],
+                reports: [
+                  { num: "01", vksTime: "", title: "Первая помощь. Основы преподавания первой помощи в образовательных организациях", speaker: "Дежурный Леонид Игоревич", role: "Председатель Российского общества первой помощи" },
+                  { num: "02", vksTime: "", title: "Об учебно-методическом комплексе по первой помощи", speaker: "Козлова Инна Эдуардовна", role: "Начальник организационно-методического отдела ОГКУЗ «МИАЦ»" },
+                  { num: "03", vksTime: "", title: "О методических рекомендациях по проведению конкурсов, фестивалей, соревнований по ПП в области", speaker: "Овсянникова Виктория Александровна", role: "Врач выездной бригады скорой помощи БЭР ОСМК и МСАЭ ОГБУЗ «ССМП Белгородской области»" },
+                  { num: "04", vksTime: "", title: "Образовательная траектория учащихся медицинских классов", speaker: "Наливайко Лариса Васильевна", role: "Врач БЭР ОСМК и МСАЭ ОГБУЗ «ССМП Белгородской области», преподаватель дополнительного образования" },
+                  { num: "05", vksTime: "", title: "Возможность обучения дошкольников навыкам оказания первой помощи. Программа «Коленька научит»", speaker: "Ушакова Нина Иосифовна", role: "Председатель БРО ООО РКК" },
+                  { num: "06", vksTime: "", title: "Опыт подготовки инструкторов первой помощи из числа студентов Медицинского колледжа НИУ «БелГУ»", speaker: "Дуброва Владислав Александрович", role: "Директор Медицинского колледжа НИУ «БелГУ»" },
+                  { num: "07", vksTime: "", title: "Психологическая готовность к оказанию ПП, психологическая поддержка", speaker: "Машковцев Вадим Викторович", role: "Фельдшер ОСМК и МСАЭ ОГБУЗ «ССМП Белгородской области»" },
+                  { num: "08", vksTime: "", title: "Типовая программа обучения инструктора первой помощи в образовательных организациях. Основные ошибки при обучении. Изменение в программы автошкол", speaker: "Астионова Диана Юрьевна", role: "Врач-анестезиолог реаниматолог БЭР ОСМК и МСАЭ ОГБУЗ «ССМП Белгородской области»" },
+                ],
+              },
+              {
+                id: "s3",
+                title: "Секция 3",
+                subtitle: "Первая помощь в работе экстренных служб и силовых структур",
+                time: "10:30 – 13:30",
+                location: "Лекторий КЦ «Октябрь»",
+                moderators: [
+                  { name: "Лежнина Е.А.", role: "начальник учебно-методического отдела ФЦМК Института усовершенствования врачей ФГБУ «НМХЦ им. Н.И. Пирогова» Минздрава России, спасатель 1 класса" },
+                  { name: "Потапова Л.А.", role: "заведующий ОСМК и МСАЭ ОГБУЗ «ССМП Белгородской области», главный внештатный специалист по медицине катастроф МЗ Белгородской области" },
+                ],
+                reports: [
+                  { num: "01", vksTime: "10:40", title: "Преемственность оказания первой и скорой медицинской помощи", speaker: "Станишевский Александр Леонидович", role: "Старший преподаватель кафедры скорой медицинской помощи и медицины катастроф, Белорусский государственный медицинский университет" },
+                  { num: "02", vksTime: "", title: "Организация обучения оказанию первой помощи пожарных и спасателей в связи с принятием нового порядка", speaker: "Логинова Оксана Викторовна", role: "Начальник отдела медико-психологического обеспечения Управления МТО Главного управления МЧС России по Белгородской области" },
+                  { num: "03", vksTime: "11:20", title: "Опыт обучения водителей СМП навыкам ПП и их применение в работе бригады", speaker: "Стяжкин Дмитрий Николаевич", role: "Зам. главного врача ГБУЗ «ССМП города-курорта Геленджик»" },
+                  { num: "04", vksTime: "", title: "Сердечно-лёгочная реанимация: новые возможности. Опыт оснащения мест массового скопления людей АНД", speaker: "Хлынцева Ирина Сергеевна", role: "Директор АНО «Академия безопасности и технологий выживания»" },
+                  { num: "05", vksTime: "", title: "Региональный опыт системы обучения населения первой помощи в Запорожской области", speaker: "Слуцкий Роман Олегович", role: "Руководитель Белгородского регионального отделения ВСК" },
+                  { num: "06", vksTime: "", title: "Основные изменения в законодательстве. Обзор и использование современных средств на догоспитальном этапе, ответственность", speaker: "Минаков Андрей Сергеевич", role: "Фельдшер ОСМК и МСАЭ ОГБУЗ «ССМП Белгородской области»" },
+                  { num: "07", vksTime: "", title: "Особенности обучения сотрудников добровольческих формирований и специальных отрядов. От первой помощи к тактике", speaker: "Худотеплая Ульяна Юрьевна", role: "Врач-анестезиолог реаниматолог БЭР ОСМК и МСАЭ ОГБУЗ «ССМП Белгородской области»" },
+                  { num: "08", vksTime: "", title: "Дистанционное диспетчерское сопровождение в практике службы СМП Белгородской области", speaker: "Осадчая Елизавета Александровна", role: "Медицинская сестра по приему и передаче вызовов СМП ОГБУЗ «ССМП Белгородской области»" },
+                  { num: "09", vksTime: "", title: "Опыт проведения мастер-классов в отдалённых районах Белгородской области", speaker: "Фугаревич Дарья Андреевна", role: "Координатор направления «Обучение первой помощи и сопровождение массовых мероприятий»" },
+                ],
+              },
+            ]
+
+            const sec = sections[activeSection]
+
+            return (
+              <div className="w-full max-w-3xl mt-4">
+                <div className={cn("text-center mb-6", themeConfig.fontClass)}>
+                  <p className={cn("text-xs uppercase tracking-widest mb-1", themeConfig.mutedForeground)}>
+                    Программа форума
+                  </p>
+                  <p className={cn("text-lg font-bold", themeConfig.foreground)}>6 марта 2026 года</p>
+                </div>
+
+                {/* Section tabs */}
+                <div className="flex gap-2 mb-4 flex-wrap justify-center">
+                  {sections.map((s, i) => (
+                    <button
+                      key={s.id}
+                      onClick={() => setActiveSection(i)}
+                      className={cn(
+                        "px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all",
+                        themeConfig.fontClass,
+                        themeConfig.border,
+                        i === activeSection
+                          ? cn(themeConfig.accent, themeConfig.accentForeground, theme === "neon" && "shadow-[0_0_15px_rgba(34,211,238,0.4)]")
+                          : cn(themeConfig.muted, themeConfig.mutedForeground, "hover:opacity-80"),
                       )}
-                    </div>
-                    <p className={cn("text-sm font-semibold leading-snug", themeConfig.foreground, themeConfig.fontClass)}>
-                      {item.title}
-                    </p>
-                    <div className={cn("flex items-start gap-1 mt-0.5", themeConfig.mutedForeground)}>
-                      <Icon name="User" size={12} className="mt-0.5 shrink-0" />
-                      <div className="flex flex-col">
-                        <span className={cn("text-xs font-medium", themeConfig.fontClass)}>{item.speaker}</span>
-                        <span className={cn("text-[11px] leading-snug", themeConfig.fontClass)}>{item.role}</span>
+                    >
+                      {s.title}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Section header */}
+                <div className={cn("p-4 rounded-xl border mb-3", themeConfig.muted, themeConfig.border, theme === "glass" && "backdrop-blur-xl bg-white/30")}>
+                  <p className={cn("text-sm font-bold uppercase tracking-wide mb-1", themeConfig.foreground, themeConfig.fontClass)}>{sec.subtitle}</p>
+                  <div className="flex flex-wrap gap-3 mt-2">
+                    <span className={cn("flex items-center gap-1 text-xs", themeConfig.mutedForeground, themeConfig.fontClass)}>
+                      <Icon name="Clock" size={12} />{sec.time}
+                    </span>
+                    <span className={cn("flex items-center gap-1 text-xs", themeConfig.mutedForeground, themeConfig.fontClass)}>
+                      <Icon name="MapPin" size={12} />{sec.location}
+                    </span>
+                  </div>
+                  <div className="mt-3 flex flex-col gap-1">
+                    <p className={cn("text-[11px] uppercase tracking-widest font-semibold mb-1", themeConfig.mutedForeground, themeConfig.fontClass)}>Модераторы:</p>
+                    {sec.moderators.map((m, i) => (
+                      <div key={i} className={cn("flex items-start gap-1 text-xs", themeConfig.mutedForeground, themeConfig.fontClass)}>
+                        <Icon name="User" size={11} className="mt-0.5 shrink-0" />
+                        <span><span className="font-semibold">{m.name}</span> — {m.role}</span>
                       </div>
-                    </div>
+                    ))}
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
+
+                {/* Reports */}
+                <div className="flex flex-col gap-2">
+                  {sec.reports.map((item) => (
+                    <div
+                      key={item.num}
+                      className={cn(
+                        "flex gap-3 p-3 rounded-xl border transition-all",
+                        themeConfig.muted,
+                        themeConfig.border,
+                        theme === "glass" && "backdrop-blur-xl bg-white/20",
+                        theme === "neon" && "shadow-[0_0_8px_rgba(34,211,238,0.06)]",
+                      )}
+                    >
+                      <div className={cn("text-base font-bold tabular-nums shrink-0 w-6 text-center pt-0.5", themeConfig.mutedForeground, themeConfig.fontClass)}>
+                        {item.num}
+                      </div>
+                      <div className="flex flex-col gap-1 min-w-0">
+                        {item.vksTime && (
+                          <span className={cn(
+                            "self-start text-[10px] px-2 py-0.5 rounded-full border font-medium",
+                            themeConfig.border,
+                            themeConfig.mutedForeground,
+                            theme === "neon" && "border-cyan-500/50 text-cyan-400",
+                            theme === "luxury" && "border-amber-500/30 text-amber-400",
+                          )}>
+                            ВКС {item.vksTime}
+                          </span>
+                        )}
+                        <p className={cn("text-sm font-semibold leading-snug", themeConfig.foreground, themeConfig.fontClass)}>
+                          {item.title}
+                        </p>
+                        <div className={cn("flex items-start gap-1", themeConfig.mutedForeground)}>
+                          <Icon name="User" size={11} className="mt-0.5 shrink-0" />
+                          <div className="flex flex-col">
+                            <span className={cn("text-xs font-medium", themeConfig.fontClass)}>{item.speaker}</span>
+                            <span className={cn("text-[11px] leading-snug", themeConfig.fontClass)}>{item.role}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )
+          })()}
 
           {/* Social Proof */}
           <div
